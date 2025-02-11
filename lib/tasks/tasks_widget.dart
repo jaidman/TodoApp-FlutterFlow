@@ -1,7 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/add_task_widget.dart';
-import '/components/task_widget.dart';
+import '/components/task_text_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -140,10 +140,11 @@ class _TasksWidgetState extends State<TasksWidget> {
                       itemBuilder: (context, listViewIndex) {
                         final listViewTasksRecord =
                             listViewTasksRecordList[listViewIndex];
-                        return TaskWidget(
+                        return TaskTextWidget(
                           key: Key(
                               'Key0sp_${listViewIndex}_of_${listViewTasksRecordList.length}'),
                           tasksDoc: listViewTasksRecord,
+                          completed: true,
                           checkAction: () async {
                             await listViewTasksRecord.reference
                                 .update(createTasksRecordData(
