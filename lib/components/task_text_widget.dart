@@ -2,25 +2,27 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'task_model.dart';
-export 'task_model.dart';
+import 'task_text_model.dart';
+export 'task_text_model.dart';
 
-class TaskWidget extends StatefulWidget {
-  const TaskWidget({
+class TaskTextWidget extends StatefulWidget {
+  const TaskTextWidget({
     super.key,
     required this.tasksDoc,
     required this.checkAction,
+    required this.completed,
   });
 
   final TasksRecord? tasksDoc;
   final Future Function()? checkAction;
+  final bool? completed;
 
   @override
-  State<TaskWidget> createState() => _TaskWidgetState();
+  State<TaskTextWidget> createState() => _TaskTextWidgetState();
 }
 
-class _TaskWidgetState extends State<TaskWidget> {
-  late TaskModel _model;
+class _TaskTextWidgetState extends State<TaskTextWidget> {
+  late TaskTextModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -31,7 +33,7 @@ class _TaskWidgetState extends State<TaskWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => TaskModel());
+    _model = createModel(context, () => TaskTextModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
