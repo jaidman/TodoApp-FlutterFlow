@@ -1,0 +1,66 @@
+"$schema": "https://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "users": {
+      "type": "object",
+      "patternProperties": {
+        "^users/.*$": {
+          "type": "object",
+          "properties": {
+            "userId": {
+              "type": "string",
+              "pattern": "^users/.*$"
+            },
+            "username": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string",
+              "format": "email"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "required": ["userId", "username", "createdAt"],
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "tasks": {
+      "type": "object",
+      "patternProperties": {
+        "^tasks/.*$": {
+          "type": "object",
+          "properties": {
+            "completed": {
+              "type": "boolean"
+            },
+            "created": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "detailed": {
+              "type": "string",
+              "maxLength": 1000
+            },
+            "title": {
+              "type": "string",
+              "maxLength": 255
+            },
+            "user": {
+              "type": "string",
+              "pattern": "^users/.*$"
+            }
+          },
+          "required": ["completed", "created", "title", "user"],
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
